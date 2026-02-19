@@ -98,18 +98,76 @@ return {
         settings = {
           ["rust-analyzer"] = {
             checkOnSave = {
-              command = "clippy",  -- Use clippy for more thorough checks
+              enable = false,  -- Disable automatic check on save for better performance
             },
             cargo = {
-              allFeatures = true,
+              allFeatures = false,  -- Only load current features to reduce overhead
               loadOutDirsFromCheck = true,
+              buildScripts = {
+                enable = false,  -- Disable build scripts for faster startup
+              },
+              target = nil,  -- Use default target only
             },
             procMacro = {
               enable = true,
+              attributes = {
+                enable = true,
+              },
+            },
+            diagnostics = {
+              enable = true,
+              disabled = { "unresolved-proc-macro" },  -- Disable slow diagnostics
+              experimental = {
+                enable = false,  -- Disable experimental diagnostics
+              },
+            },
+            files = {
+              excludeDirs = { ".git", "target", "node_modules" },  -- Exclude large dirs
+            },
+            lens = {
+              enable = false,  -- Disable code lens for better performance
             },
             inlayHints = {
+              bindingModeHints = {
+                enable = false,
+              },
+              chainingHints = {
+                enable = true,
+              },
+              closingBraceHints = {
+                enable = true,
+                minLines = 25,
+              },
+              closureReturnTypeHints = {
+                enable = "never",
+              },
               lifetimeElisionHints = {
-                enable = "always",
+                enable = "never",  -- Disable to reduce visual clutter and CPU usage
+                useParameterNames = false,
+              },
+              maxLength = 25,
+              parameterHints = {
+                enable = true,
+              },
+              reborrowHints = {
+                enable = "never",
+              },
+              renderColons = true,
+              typeHints = {
+                enable = true,
+                hideClosureInitialization = false,
+                hideNamedConstructor = false,
+              },
+            },
+            completion = {
+              postfix = {
+                enable = true,
+              },
+              privateEditable = {
+                enable = false,
+              },
+              fullFunctionSignatures = {
+                enable = false,
               },
             },
           }
