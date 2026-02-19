@@ -28,5 +28,9 @@ map('n', '<leader>bd', '<cmd>bdelete<CR>', { desc = 'Delete buffer' })
 -- Formatting
 map('n', '<leader>gf', vim.lsp.buf.format, { desc = 'Format file' })
 
+-- Diagnostic navigation
+map('n', '<leader>ne', vim.diagnostic.goto_next, { desc = 'Next error/warning' })
+map('n', '<leader>pe', vim.diagnostic.goto_prev, { desc = 'Previous error/warning' })
+map('n', '<leader>re', vim.diagnostic.open_float, { desc = 'Show error/diagnostic' })
 
 
