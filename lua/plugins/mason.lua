@@ -24,6 +24,7 @@ return {
                     "tailwindcss",   -- TailwindCSS (useful for React/Vue)
                     "html",          -- HTML
                     "cssls",         -- CSS
+                    "svelte",        -- Svelte
                 },
                 automatic_installation = true,
             })

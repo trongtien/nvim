@@ -22,6 +22,7 @@ return {
             "tsx",
             "jsx",
             "vue",
+            "svelte",
             "json",
             "yaml"
         },

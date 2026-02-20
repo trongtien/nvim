@@ -226,6 +226,31 @@ return {
         },
       })
       vim.lsp.enable('ts_ls')
+
+      -- Svelte setup with svelte-language-server
+      vim.lsp.config('svelte', {
+        on_attach = on_attach,
+        on_init = on_init,
+        capabilities = capabilities,
+        filetypes = { "svelte" },
+        settings = {
+          svelte = {
+            plugin = {
+              html = { completions = { enable = true, emmet = false } },
+              svelte = { completions = { enable = true, emmet = true } },
+              css = { completions = { enable = true, emmet = true } },
+              typescript = { 
+                enable = true,
+                diagnostics = { enable = true },
+                hover = { enable = true },
+                completions = { enable = true },
+                codeActions = { enable = true },
+              },
+            },
+          },
+        },
+      })
+      vim.lsp.enable('svelte')
     end
 }
 
