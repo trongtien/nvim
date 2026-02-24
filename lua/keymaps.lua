@@ -1,60 +1,73 @@
-vim.g.mapleader = " " -- space for leader
-vim.g.maplocalleader = " " -- space for localleader
+local utils = require("core.utils")
 
--- better movement in wrapped text
-vim.keymap.set("n", "j", function()
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+utils.map_expr("j", function()
 	return vim.v.count == 0 and "gj" or "j"
-end, { expr = true, silent = true, desc = "Down (wrap-aware)" })
+end, "Down (wrap-aware)")
 
-vim.keymap.set("n", "k", function()
+utils.map_expr("k", function()
 	return vim.v.count == 0 and "gk" or "k"
-end, { expr = true, silent = true, desc = "Up (wrap-aware)" })
+end, "Up (wrap-aware)")
 
-vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
+utils.map("<leader>c", ":nohlsearch<CR>", "Clear search highlights")
 
-vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
+utils.map("n", "nzzzv", "Next search result (centered)")
+utils.map("N", "Nzzzv", "Previous search result (centered)")
+utils.map("<C-d>", "<C-d>zz", "Half page down (centered)")
+utils.map("<C-u>", "<C-u>zz", "Half page up (centered)")
 
-vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
-vim.keymap.set({ "n", "v" }, "<leader>x", '"_d', { desc = "Delete without yanking" })
+utils.map_mode("x", "<leader>p", '"_dP', "Paste without yanking")
+utils.map_mode({ "n", "v" }, "<leader>x", '"_d', "Delete without yanking")
 
-vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
+utils.map("<leader>bn", ":bnext<CR>", "Next buffer")
+utils.map("<leader>bp", ":bprevious<CR>", "Previous buffer")
 
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+utils.map("<C-h>", "<C-w>h", "Move to left window")
+utils.map("<C-j>", "<C-w>j", "Move to bottom window")
+utils.map("<C-k>", "<C-w>k", "Move to top window")
+utils.map("<C-l>", "<C-w>l", "Move to right window")
 
-vim.keymap.set("n", "sv", ":vsplit<CR>", { desc = "Split window vertically" })
-vim.keymap.set("n", "sh", ":split<CR>", { desc = "Split window horizontally" })
+utils.map("sv", ":vsplit<CR>", "Split window vertically")
+utils.map("sh", ":split<CR>", "Split window horizontally")
 
-vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
-vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
+utils.map("<C-Up>", ":resize +2<CR>", "Increase window height")
+utils.map("<C-Down>", ":resize -2<CR>", "Decrease window height")
+utils.map("<C-Left>", ":vertical resize -2<CR>", "Decrease window width")
+utils.map("<C-Right>", ":vertical resize +2<CR>", "Increase window width")
 
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+utils.map("<A-j>", ":m .+1<CR>==", "Move line down")
+utils.map("<A-k>", ":m .-2<CR>==", "Move line up")
+utils.map_mode("v", "<A-j>", ":m '>+1<CR>gv=gv", "Move selection down")
+utils.map_mode("v", "<A-k>", ":m '<-2<CR>gv=gv", "Move selection up")
 
-vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
-vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
+utils.map_mode("v", "<", "<gv", "Indent left and reselect")
+utils.map_mode("v", ">", ">gv", "Indent right and reselect")
 
-vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
+utils.map("J", "mzJ`z", "Join lines and keep cursor position")
 
-vim.keymap.set("n", "<leader>pa", function() -- show file path
+utils.map("<leader>pa", function()
 	local path = vim.fn.expand("%:p")
 	vim.fn.setreg("+", path)
 	print("file:", path)
-end, { desc = "Copy full file path" })
+end, "Copy full file path")
 
-vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save buffer" })
-vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", { desc = "Save buffer" })
+utils.map("<C-s>", ":w<CR>", "Save buffer")
+utils.map_mode("i", "<C-s>", "<Esc>:w<CR>", "Save buffer")
 
-vim.keymap.set("n", "<leader>td", function()
+utils.map("<leader>td", function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-end, { desc = "Toggle diagnostics" })
+end, "Toggle diagnostics")
+
+utils.map("<leader>ne", function()
+	vim.diagnostic.goto_next({ buffer = 0 })
+end, "Next error buffer")
+
+utils.map("<leader>pe", function()
+	vim.diagnostic.goto_prev({ buffer = 0 })
+end, "Prev error buffer")
+
+utils.map("<leader>re", function()
+	vim.diagnostic.open_float({ scope = "line" })
+end, "Show error line")

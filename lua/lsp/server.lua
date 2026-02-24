@@ -29,6 +29,7 @@ local servers = {
   ts_ls = {},
   gopls = {},
   clangd = {},
+  tailwindcss = {},
 }
 
 for name, config in pairs(servers) do
