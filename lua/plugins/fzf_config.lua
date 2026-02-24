@@ -1,7 +1,16 @@
 local core_utils = require("core.utils")
 local fzf = require("fzf-lua")
 
-fzf.setup({})
+fzf.setup({
+  winopts = {
+    width = 1,
+    height = 0.9,
+    row = 0.8,
+    col = 0,
+    border = "rounded",
+    relative = "editor",
+  },
+})
 
 core_utils.map("<leader>ff", function()
   fzf.files()
