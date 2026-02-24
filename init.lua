@@ -44,4 +44,5 @@ require("plugins.mini_config")
 require("plugins.git_config")
 require("plugins.coding")
 require("plugins.blink_cmp")
+require("plugins.lazy_git")
 
