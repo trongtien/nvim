@@ -13,6 +13,10 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
+    "copilot.vim": {
+      "rev": "a12fd5672110c8aa7e3c8419e28c96943ca179be",
+      "src": "https://github.com/github/copilot.vim"
+    },
     "efmls-configs-nvim": {
       "rev": "2dd907fe0043b95a901a9aee814f17804aa4426d",
       "src": "https://github.com/creativenull/efmls-configs-nvim"

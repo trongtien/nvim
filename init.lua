@@ -22,6 +22,7 @@ vim.pack.add({
     src = "https://github.com/saghen/blink.cmp",
     version = vim.version.range("1.*"),
   },
+  "https://github.com/github/copilot.vim",
   "https://github.com/L3MON4D3/LuaSnip",
 })
 
@@ -35,6 +36,7 @@ core_utils.packadd("nvim-lspconfig")
 core_utils.packadd("mason.nvim")
 core_utils.packadd("efmls-configs-nvim")
 core_utils.packadd("blink.cmp")
+core_utils.packadd("copilot.vim")
 core_utils.packadd("LuaSnip")
 
 local ui_color = require("uicolors")
@@ -57,6 +59,6 @@ require("plugins.fzf_config")
 require("plugins.mini_config")
 require("plugins.git_config")
 require("plugins.coding")
-require("plugins.blink_cmp")
+require("plugins.cobilot")
 require("plugins.lazy_git")
 
