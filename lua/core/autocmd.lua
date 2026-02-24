@@ -1,13 +1,13 @@
 local M = {}
 local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 
-local function auto_cmd(event, opts)
+M.auto_cmd = function(event, opts)
   opts.group = augroup
   vim.api.nvim_create_autocmd(event, opts)
 end
 
 
-auto_cmd("TextYankPost", {
+M.auto_cmd("TextYankPost", {
   group = augroup,
   callback = function()
     vim.hl.on_yank()
@@ -15,7 +15,7 @@ auto_cmd("TextYankPost", {
 })
 
 -- return to last cursor position
-auto_cmd("BufReadPost", {
+M.auto_cmd("BufReadPost", {
   group = augroup,
   desc = "Restore last cursor position",
   callback = function()
@@ -35,7 +35,7 @@ auto_cmd("BufReadPost", {
   end,
 })
 
-auto_cmd("FileType", {
+M.auto_cmd("FileType", {
   group = augroup,
   pattern = { "markdown", "text", "gitcommit" },
   callback = function()
