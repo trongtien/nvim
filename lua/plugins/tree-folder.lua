@@ -1,3 +1,4 @@
+local utils = require("core.utils")
 local nvim_tree = require("nvim-tree")
 nvim_tree.setup({
 	view = {
@@ -12,9 +13,9 @@ nvim_tree.setup({
 })
 
 
-vim.keymap.set("n", "<leader>e", function()
+utils.map("<leader>e", function()
 	require("nvim-tree.api").tree.toggle()
-end, { desc = "Toggle NvimTree" })
+end, "Toggle NvimTree")
 
 vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })

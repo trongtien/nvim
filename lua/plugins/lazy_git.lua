@@ -1,3 +1,5 @@
+local utils = require("core.utils")
+
 local lazygit_state = { buf = nil, win = nil, is_open = false }
 
 local function LazyGit()
@@ -54,4 +56,4 @@ local function LazyGit()
 	})
 end
 
-vim.keymap.set("n", "<leader>gg", LazyGit, { desc = "Toggle LazyGit" })
+utils.map("<leader>gg", LazyGit, "Toggle LazyGit")

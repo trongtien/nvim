@@ -1,6 +1,8 @@
 package.path = vim.fn.stdpath("config") ..
 "/lua/?.lua;" .. vim.fn.stdpath("config") .. "/lua/?/init.lua;" .. package.path
 
+local core_utils = require("core.utils")
+
 vim.pack.add({
   "https://www.github.com/ayu-theme/ayu-vim",
   "https://www.github.com/lewis6991/gitsigns.nvim",
@@ -22,6 +24,18 @@ vim.pack.add({
   },
   "https://github.com/L3MON4D3/LuaSnip",
 })
+
+core_utils.packadd("ayu-vim")
+core_utils.packadd("nvim-treesitter")
+core_utils.packadd("gitsigns.nvim")
+core_utils.packadd("mini.nvim")
+core_utils.packadd("fzf-lua")
+core_utils.packadd("nvim-tree.lua")
+core_utils.packadd("nvim-lspconfig")
+core_utils.packadd("mason.nvim")
+core_utils.packadd("efmls-configs-nvim")
+core_utils.packadd("blink.cmp")
+core_utils.packadd("LuaSnip")
 
 local ui_color = require("uicolors")
 ui_color.load_theme_current()
