@@ -1,91 +1,47 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
-vim.g.mapleader = " "
+package.path = vim.fn.stdpath("config") ..
+"/lua/?.lua;" .. vim.fn.stdpath("config") .. "/lua/?/init.lua;" .. package.path
 
--- bootstrap lazy and all plugins
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+vim.pack.add({
+  "https://www.github.com/ayu-theme/ayu-vim",
+  "https://www.github.com/lewis6991/gitsigns.nvim",
+  "https://www.github.com/echasnovski/mini.nvim",
+  "https://www.github.com/ibhagwan/fzf-lua",
+  "https://www.github.com/nvim-tree/nvim-tree.lua",
+  {
+    src = "https://github.com/nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    build = ":TSUpdate",
+  },
+  -- Language Server Protocols
+  "https://www.github.com/neovim/nvim-lspconfig",
+  "https://github.com/mason-org/mason.nvim",
+  "https://github.com/creativenull/efmls-configs-nvim",
+  {
+    src = "https://github.com/saghen/blink.cmp",
+    version = vim.version.range("1.*"),
+  },
+  "https://github.com/L3MON4D3/LuaSnip",
+})
 
-if not vim.uv.fs_stat(lazypath) then
-    local repo = "https://github.com/folke/lazy.nvim.git"
-    vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
-end
+local ui_color = require("uicolors")
+ui_color.load_theme_current()
+ui_color.set_transparent()
 
-vim.opt.rtp:prepend(lazypath)
+_G.file_type = ui_color.file_type
+_G.file_size = ui_color.file_size
+_G.mode_icon = ui_color.mode_icon
+_G.git_branch = ui_color.git_branch
 
-local lazy_config = {
-    defaults = { lazy = true },
-    install = { colorscheme = { "nvchad" } },
+require("options")
+require("keymaps")
+require("autocmd")
+require("plugins.status_line")
+require("plugins.treesitter")
+require("plugins.tree-folder")
+require("plugins.float_term")
+require("plugins.fzf_config")
+require("plugins.mini_config")
+require("plugins.git_config")
+require("plugins.coding")
+require("plugins.blink_cmp")
 
-    checker = {
-        enabled = true,       -- Enable automatic checking for plugin updates
-        notify = true,        -- Show notifications when updates are available
-        frequency = 3600,     -- Check for updates every hour (in seconds)
-        check_pinned = false, -- Don't check pinned plugins
-    },
-
-    ui = {
-        icons = {
-            ft = "",
-            lazy = "󰂠 ",
-            loaded = "",
-            not_loaded = "",
-        },
-    },
-
-    performance = {
-        rtp = {
-            disabled_plugins = {
-                "2html_plugin",
-                "tohtml",
-                "getscript",
-                "getscriptPlugin",
-                "gzip",
-                "logipat",
-                "netrw",
-                "netrwPlugin",
-                "netrwSettings",
-                "netrwFileHandlers",
-                "matchit",
-                "tar",
-                "tarPlugin",
-                "rrhelper",
-                "spellfile_plugin",
-                "vimball",
-                "vimballPlugin",
-                "zip",
-                "zipPlugin",
-                "tutor",
-                "rplugin",
-                "syntax",
-                "synmenu",
-                "optwin",
-                "compiler",
-                "bugreport",
-                "ftplugin",
-            },
-        },
-    },
-}
-
-
--- load plugins
-require("lazy").setup({
-    {
-        "NvChad/NvChad",
-        lazy = false,
-        branch = "v2.5",
-        import = "nvchad.plugins",
-    },
-    { import = "nvchad.blink.lazyspec" },
-    { import = "plugins" },
-}, lazy_config)
-
--- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
-
-require "options"
-require "autocmds"
-
-vim.schedule(function()
-    require "mappings"
-end)
