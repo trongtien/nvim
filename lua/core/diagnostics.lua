@@ -24,7 +24,7 @@ vim.diagnostic.config({
   severity_sort = true,
   float = {
     border = "rounded",
-    source = "always",
+    source = true,
     header = "",
     prefix = "",
     focusable = false,
@@ -32,24 +32,23 @@ vim.diagnostic.config({
   },
 })
 
-
 -- Global keymap
 core_utils.map("<leader>q", function()
   vim.diagnostic.setloclist({ open = true })
 end, "Open diagnostic list")
 
-core_utils.map("<leader>dl", vim.diagnostic.open_float, "Show line diagnostics")
+core_utils.map("<leader>re", vim.diagnostic.open_float, "Show line diagnostics")
 
+core_utils.map("<leader>rf", function()
+  vim.diagnostic.open_float()
+end, "Focus diagnostic float")
 
--- Open review error, dociment function, error ...
-do
-  local orig = vim.lsp.util.open_floating_preview
-  function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-    opts = opts or {}
-    opts.border = opts.border or "rounded"
-    return orig(contents, syntax, opts, ...)
-  end
-end
+core_utils.map("<leader>ne", function()
+  vim.diagnostic.goto_next({ wrap = true })
+end, "Next diagnostic")
 
+core_utils.map("<leader>pe", function()
+  vim.diagnostic.goto_prev({ wrap = true })
+end, "Previous diagnostic")
 
 return M

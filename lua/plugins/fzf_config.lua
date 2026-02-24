@@ -32,6 +32,8 @@ core_utils.map("<leader>fx", function()
   fzf.diagnostics_document()
 end, "FZF Diagnostics Document")
 
-core_utils.map("<leader>fX", function()
-  fzf.diagnostics_workspace()
-end, "FZF Diagnostics Workspace")
+core_utils.map("<C-q>", function()
+  fzf.diagnostics()
+end, "FZF Diagnostics")
+
+
