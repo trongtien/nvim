@@ -33,6 +33,10 @@
       "rev": "306a05526ada86a7b30af95c5cc81ffba93fef97",
       "src": "https://github.com/folke/lazy.nvim"
     },
+    "mason-lspconfig.nvim": {
+      "rev": "6c4830e37743b060d13c9269394176aea6a0fbc8",
+      "src": "https://github.com/williamboman/mason-lspconfig.nvim"
+    },
     "mason.nvim": {
       "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
       "src": "https://github.com/mason-org/mason.nvim"

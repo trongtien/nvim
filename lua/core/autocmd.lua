@@ -45,4 +45,25 @@ M.auto_cmd("FileType", {
   end,
 })
 
+M.auto_cmd("InsertEnter", {
+  callback = function()
+    vim.opt.relativenumber = true
+  end,
+})
+
+M.auto_cmd("InsertLeave", {
+  callback = function()
+    vim.opt.relativenumber = true
+  end,
+})
+
+if vim.fn.has("wsl") == 1 then
+    M.auto_cmd("TextYankPost", {
+        callback = function()
+            vim.fn.system("clip.exe", vim.fn.getreg('"'))
+        end,
+    })
+    vim.opt.clipboard = "unnamedplus"
+end
+
 return M

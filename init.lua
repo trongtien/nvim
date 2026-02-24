@@ -18,6 +18,7 @@ vim.pack.add({
   "https://www.github.com/neovim/nvim-lspconfig",
   "https://github.com/mason-org/mason.nvim",
   "https://github.com/creativenull/efmls-configs-nvim",
+  "https://github.com/williamboman/mason-lspconfig.nvim",
   {
     src = "https://github.com/saghen/blink.cmp",
     version = vim.version.range("1.*"),
@@ -35,6 +36,7 @@ core_utils.packadd("nvim-tree.lua")
 core_utils.packadd("nvim-lspconfig")
 core_utils.packadd("mason.nvim")
 core_utils.packadd("efmls-configs-nvim")
+core_utils.packadd("mason-lspconfig.nvim")
 core_utils.packadd("blink.cmp")
 core_utils.packadd("copilot.vim")
 core_utils.packadd("LuaSnip")
@@ -59,6 +61,8 @@ require("plugins.fzf_config")
 require("plugins.mini_config")
 require("plugins.git_config")
 require("plugins.coding")
+require("mason-lspconfig")
 require("plugins.cobilot")
 require("plugins.lazy_git")
+require("plugins.blink_cmp")
 
