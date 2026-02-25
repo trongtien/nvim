@@ -12,13 +12,13 @@ utils.map_expr("k", function()
 end, "Up (wrap-aware)")
 
 utils.map("<leader>c", ":nohlsearch<CR>", "Clear search highlights")
-utils.map("i", "jj", "<Esc>", "Exit insert mode")
 
 utils.map("n", "nzzzv", "Next search result (centered)")
 utils.map("N", "Nzzzv", "Previous search result (centered)")
 utils.map("<C-d>", "<C-d>zz", "Half page down (centered)")
 utils.map("<C-u>", "<C-u>zz", "Half page up (centered)")
 
+utils.map_mode("i", "jj", "<ESC>", "Exist insert mode")
 utils.map_mode("x", "<leader>p", '"_dP', "Paste without yanking")
 utils.map_mode({ "n", "v" }, "<leader>x", '"_d', "Delete without yanking")
 
