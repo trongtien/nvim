@@ -36,4 +36,16 @@ core_utils.map("<C-q>", function()
   fzf.diagnostics()
 end, "FZF Diagnostics")
 
+core_utils.map("<leader>gb", function()
+  fzf.git_branches()
+end, "FZF Git Branches")
+
+core_utils.map("<leader>gc", function()
+  fzf.git_commits()
+end, "FZF Git Commits")
+
+core_utils.map("<leader>gs", function()
+  fzf.git_status()
+end, "FZF Git Status")
+
 

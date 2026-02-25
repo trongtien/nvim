@@ -66,4 +66,11 @@ if vim.fn.has("wsl") == 1 then
     vim.opt.clipboard = "unnamedplus"
 end
 
+M.auto_cmd("BufWinEnter", {
+  group = augroup,
+  callback = function()
+    vim.opt_local.modifiable = true
+  end,
+})
+
 return M

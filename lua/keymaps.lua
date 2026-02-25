@@ -12,6 +12,7 @@ utils.map_expr("k", function()
 end, "Up (wrap-aware)")
 
 utils.map("<leader>c", ":nohlsearch<CR>", "Clear search highlights")
+utils.map("i", "jj", "<Esc>", "Exit insert mode")
 
 utils.map("n", "nzzzv", "Next search result (centered)")
 utils.map("N", "Nzzzv", "Previous search result (centered)")
