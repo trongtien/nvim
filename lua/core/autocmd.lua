@@ -58,18 +58,36 @@ M.auto_cmd("InsertLeave", {
 })
 
 if vim.fn.has("wsl") == 1 then
-    M.auto_cmd("TextYankPost", {
-        callback = function()
-            vim.fn.system("clip.exe", vim.fn.getreg('"'))
-        end,
-    })
-    vim.opt.clipboard = "unnamedplus"
+  M.auto_cmd("TextYankPost", {
+    callback = function()
+      vim.fn.system("clip.exe", vim.fn.getreg('"'))
+    end,
+  })
+  vim.opt.clipboard = "unnamedplus"
 end
 
 M.auto_cmd("BufWinEnter", {
   group = augroup,
   callback = function()
     vim.opt_local.modifiable = true
+  end,
+})
+
+M.auto_cmd("LspAttach", {
+  group = augroup,
+  callback = function(e)
+    local opts = { buffer = e.buf }
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set("n", "<leader>gf", function() vim.lsp.buf.format() end, opts)
+    vim.keymap.set("n", "<leader>sw", function() vim.lsp.buf.workspace_symbol() end, opts)
+    vim.keymap.set("n", "<leader>sd", function() vim.diagnostic.open_float() end, opts)
+    vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set("n", "<leader>sr", function() vim.lsp.buf.references() end, opts)
+    vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
   end,
 })
 

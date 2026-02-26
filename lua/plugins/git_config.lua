@@ -5,7 +5,7 @@ require("gitsigns").setup({
 		add = { text = "\u{2590}" }, -- ▏
 		change = { text = "\u{2590}" }, -- ▐
 		delete = { text = "\u{2590}" }, -- ◦
-		topdelete = { text = "\u{25e6}" }, -- ◦
+		aopdelete = { text = "\u{25e6}" }, -- ◦
 		changedelete = { text = "\u{25cf}" }, -- ●
 		untracked = { text = "\u{25cb}" }, -- ○
 	},
@@ -27,11 +27,11 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 
 		local bufnr = vim.api.nvim_get_current_buf()
 		local opts = { buffer = bufnr, remap = false }
-		vim.keymap.set("n", "<leader>p", function()
+		vim.keymap.set("n", "<leader>gp", function()
 			vim.cmd.Git("push")
 		end, opts)
 
-		vim.keymap.set("n", "<leader>P", function()
+		vim.keymap.set("n", "<leader>gP", function()
 			vim.cmd.Git({ "pull", "--rebase" })
 		end, opts)
 
