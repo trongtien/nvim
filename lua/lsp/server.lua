@@ -81,7 +81,6 @@ local servers = {
       "fileinfo",
       "filter",
       "ftp",
-      "gd",
       "hash",
       "iconv",
       "json",

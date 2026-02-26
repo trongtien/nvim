@@ -53,6 +53,10 @@
       "rev": "2b6a9e4dacb435a95eff474c80d0e94ae0e4f909",
       "src": "https://github.com/TimUntersberger/neogit"
     },
+    "neovim": {
+      "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
+      "src": "https://www.github.com/rose-pine/neovim"
+    },
     "nvim-lspconfig": {
       "rev": "b7dcde3e6195b43476ae799720b177aedc16d44c",
       "src": "https://github.com/neovim/nvim-lspconfig"
@@ -84,6 +88,10 @@
     "trouble.nvim": {
       "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
       "src": "https://github.com/folke/trouble.nvim"
+    },
+    "vim-fugitive": {
+      "rev": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4",
+      "src": "https://www.github.com/tpope/vim-fugitive"
     }
   }
 }

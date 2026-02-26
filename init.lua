@@ -1,10 +1,12 @@
 package.path = vim.fn.stdpath("config") ..
-"/lua/?.lua;" .. vim.fn.stdpath("config") .. "/lua/?/init.lua;" .. package.path
+    "/lua/?.lua;" .. vim.fn.stdpath("config") .. "/lua/?/init.lua;" .. package.path
 
 local core_utils = require("core.utils")
 
 vim.pack.add({
   "https://www.github.com/ayu-theme/ayu-vim",
+  "https://www.github.com/rose-pine/neovim",
+  "https://www.github.com/tpope/vim-fugitive",
   "https://www.github.com/lewis6991/gitsigns.nvim",
   "https://www.github.com/echasnovski/mini.nvim",
   "https://www.github.com/ibhagwan/fzf-lua",
@@ -28,6 +30,8 @@ vim.pack.add({
 })
 
 core_utils.packadd("ayu-vim")
+core_utils.packadd("neovim")
+core_utils.packadd("vim-fugitive")
 core_utils.packadd("nvim-treesitter")
 core_utils.packadd("gitsigns.nvim")
 core_utils.packadd("mini.nvim")
@@ -42,8 +46,8 @@ core_utils.packadd("copilot.vim")
 core_utils.packadd("LuaSnip")
 
 local ui_color = require("uicolors")
-ui_color.load_theme_current()
-ui_color.set_transparent()
+ui_color.load_theme_current(ui_color.THEME_ROSE_PINE_NAME)
+-- ui_color.set_transparent()
 
 _G.file_type = ui_color.file_type
 _G.file_size = ui_color.file_size
@@ -65,4 +69,3 @@ require("mason-lspconfig")
 require("plugins.cobilot")
 require("plugins.lazy_git")
 require("plugins.blink_cmp")
-

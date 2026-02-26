@@ -1,7 +1,11 @@
 local M = {}
 
-M.load_theme_current = function()
-  vim.cmd.colorscheme("ayu")
+M.THEME_AYU_NAME = 'ayu'
+M.THEME_ROSE_PINE_NAME = 'rose-pine'
+
+M.load_theme_current = function(color)
+  color = color or "ayu"
+  vim.cmd.colorscheme(color)
 end
 
 M.set_transparent = function()

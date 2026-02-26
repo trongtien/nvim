@@ -35,17 +35,15 @@ local function lsp_on_attach(ev)
     vim.diagnostic.jump({ count = -1 })
   end, "Prev Diagnostic", opts)
 
+  utils.map("gd", function() vim.lsp.buf.definition() end, "Go to Definition", opts)
+
   -- FZF navigation
   if fzf then
     utils.map("<leader>gd", function()
       fzf.lsp_definitions({ jump_to_single_result = true })
     end, "Definitions", opts)
-
-    utils.map("<leader>fr", fzf.lsp_references, "References", opts)
-    utils.map("<leader>fi", fzf.lsp_implementations, "Implementations", opts)
-    utils.map("<leader>ft", fzf.lsp_typedefs, "Type Definitions", opts)
-    utils.map("<leader>fs", fzf.lsp_document_symbols, "Document Symbols", opts)
-    utils.map("<leader>fw", fzf.lsp_workspace_symbols, "Workspace Symbols", opts)
+  else
+    utils.map("<leader>gd", function() vim.lsp.buf.definition() end, "Go to Definition", opts)
   end
 
   -- Organize imports
