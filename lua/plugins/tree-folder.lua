@@ -6,6 +6,8 @@ nvim_tree.setup({
 	},
 	filters = {
 		dotfiles = false,
+		git_ignored = false,  -- Show gitignored files
+		custom = {},          -- No custom filters
 	},
 	renderer = {
 		group_empty = true,
@@ -16,6 +18,10 @@ nvim_tree.setup({
 utils.map("<leader>e", function()
 	require("nvim-tree.api").tree.toggle()
 end, "Toggle NvimTree")
+
+utils.map("<leader>fe", function()
+	require("nvim-tree.api").tree.find_file({ open = true, focus = true })
+end, "Focus current file in NvimTree")
 
 vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
