@@ -7,6 +7,7 @@ vim.pack.add({
   "https://www.github.com/ayu-theme/ayu-vim",
   "https://www.github.com/rose-pine/neovim",
   "https://www.github.com/tpope/vim-fugitive",
+  "https://www.github.com/mg979/vim-visual-multi",
   "https://www.github.com/lewis6991/gitsigns.nvim",
   "https://www.github.com/echasnovski/mini.nvim",
   "https://www.github.com/ibhagwan/fzf-lua",
@@ -32,6 +33,7 @@ vim.pack.add({
 core_utils.packadd("ayu-vim")
 core_utils.packadd("neovim")
 core_utils.packadd("vim-fugitive")
+core_utils.packadd("vim-visual-multi")
 core_utils.packadd("nvim-treesitter")
 core_utils.packadd("gitsigns.nvim")
 core_utils.packadd("mini.nvim")

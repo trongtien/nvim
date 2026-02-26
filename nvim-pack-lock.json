@@ -92,6 +92,10 @@
     "vim-fugitive": {
       "rev": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4",
       "src": "https://www.github.com/tpope/vim-fugitive"
+    },
+    "vim-visual-multi": {
+      "rev": "a6975e7c1ee157615bbc80fc25e4392f71c344d4",
+      "src": "https://www.github.com/mg979/vim-visual-multi"
     }
   }
 }
