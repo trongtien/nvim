@@ -14,6 +14,8 @@ require("gitsigns").setup({
 })
 
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.keymap.set("n", "<leader>gp", ":Git push<CR>")
+vim.keymap.set("n", "<leader>gP", ":Git pull --rebase<CR>")
 
 local FugitiveGroup = vim.api.nvim_create_augroup("Fugitive", {})
 
@@ -34,6 +36,8 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 		vim.keymap.set("n", "<leader>gP", function()
 			vim.cmd.Git({ "pull", "--rebase" })
 		end, opts)
+
+    vim.keymap.set("n", "<leader>gc", ":Git commit -m \"", { desc = "Git Commit Quick" })
 
 		vim.keymap.set("n", "<leader>t", ":Git push -u origin ", opts)
 	end,
