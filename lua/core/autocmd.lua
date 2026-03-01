@@ -53,19 +53,7 @@ M.auto_cmd("FileType", {
   end,
 })
 
-M.auto_cmd("InsertEnter", {
-  callback = function()
-    vim.opt.relativenumber = true
-    vim.cmd("CopilotDisable")
-  end,
-})
 
-M.auto_cmd("InsertLeave", {
-  callback = function()
-    vim.opt.relativenumber = true
-    vim.cmd("CopilotEnable")
-  end,
-})
 
 if vim.fn.has("wsl") == 1 then
   M.auto_cmd("TextYankPost", {
