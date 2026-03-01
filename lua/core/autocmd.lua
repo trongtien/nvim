@@ -37,7 +37,7 @@ M.auto_cmd("BufReadPost", {
 
 M.auto_cmd("FileType", {
   group = augroup,
-  pattern = { "markdown", "text", "gitcommit" },
+  pattern = { "markdown", "text", "gitcommit", "tex" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true
@@ -45,15 +45,25 @@ M.auto_cmd("FileType", {
   end,
 })
 
+M.auto_cmd("FileType", {
+  group = augroup,
+  pattern = "tex",
+  callback = function()
+    vim.opt_local.spelllang = "en_us"
+  end,
+})
+
 M.auto_cmd("InsertEnter", {
   callback = function()
     vim.opt.relativenumber = true
+    vim.cmd("CopilotDisable")
   end,
 })
 
 M.auto_cmd("InsertLeave", {
   callback = function()
     vim.opt.relativenumber = true
+    vim.cmd("CopilotEnable")
   end,
 })
 

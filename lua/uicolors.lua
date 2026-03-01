@@ -2,9 +2,12 @@ local M = {}
 
 M.THEME_AYU_NAME = 'ayu'
 M.THEME_ROSE_PINE_NAME = 'rose-pine'
+M.THEME_CUSTOM_NAME = 'custom'
+M.THEME_DOSBOX_NAME = 'dosbox'
+M.THEME_DOSBOX_BLACK_NAME = 'dosbox-black'
 
 M.load_theme_current = function(color)
-  color = color or "ayu"
+  color = color or "custom"
   vim.cmd.colorscheme(color)
 end
 

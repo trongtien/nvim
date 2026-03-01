@@ -50,6 +50,9 @@ opt.undodir = undodir -- set the undo directory
 opt.updatetime = 300 -- faster completion
 opt.timeoutlen = 500 -- timeout duration
 opt.ttimeoutlen = 0 -- key code timeout
+opt.lazyredraw = true -- reduce lag by skipping redraw during macros
+opt.redrawtime = 10000 -- increase neovim redraw tolerance
+opt.maxmempattern = 20000 -- increase max memory
 opt.autoread = true -- auto-reload changes if outside of neovim
 opt.autowrite = false -- do not auto-save
 
@@ -79,5 +82,3 @@ opt.splitright = true -- vertical splits go right
 opt.wildmenu = true -- tab completion
 opt.wildmode = "longest:full,full" -- complete longest common match, full completion list, cycle through with Tab
 opt.diffopt:append("linematch:60") -- improve diff display
-opt.redrawtime = 10000 -- increase neovim redraw tolerance
-opt.maxmempattern = 20000 -- increase max memory

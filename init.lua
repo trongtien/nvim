@@ -48,8 +48,13 @@ core_utils.packadd("copilot.vim")
 core_utils.packadd("LuaSnip")
 
 local ui_color = require("uicolors")
-ui_color.load_theme_current(ui_color.THEME_ROSE_PINE_NAME)
+ui_color.load_theme_current(ui_color.THEME_CUSTOM_NAME)
 -- ui_color.set_transparent()
+
+require("core.color_overrides")
+vim.defer_fn(function()
+  require("core.color_overrides").setup_colorscheme_overrides()
+end, 0)
 
 _G.file_type = ui_color.file_type
 _G.file_size = ui_color.file_size
