@@ -1,0 +1,20 @@
+return {
+    "eandrju/cellular-automaton.nvim",
+    { import = "kevis.lazy.cloak" },
+    { import = "kevis.lazy.colors" },
+    { import = "kevis.lazy.conform" },
+    { import = "kevis.lazy.dap" },
+    { import = "kevis.lazy.fugitive" },
+    { import = "kevis.lazy.gitsigns" },
+    { import = "kevis.lazy.golf" },
+    { import = "kevis.lazy.jai" },
+    { import = "kevis.lazy.lsp" },
+    { import = "kevis.lazy.neotest" },
+    { import = "kevis.lazy.nvimtree" },
+    { import = "kevis.lazy.oil" },
+    { import = "kevis.lazy.snippets" },
+    { import = "kevis.lazy.fzf" },
+    { import = "kevis.lazy.tj" },
+    { import = "kevis.lazy.treesitter" },
+    { import = "kevis.lazy.unused_copilot" }
+}

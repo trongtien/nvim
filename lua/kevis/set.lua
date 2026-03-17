@@ -1,0 +1,56 @@
+vim.opt.nu = true
+vim.opt.relativenumber = true
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
+
+vim.opt.wrap = false
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
+
+vim.opt.updatetime = 50
+
+vim.opt.colorcolumn = "80"
+
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+})
+
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "white" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#ead84e" })
+
+
+local notify_original = vim.notify
+vim.notify = function(msg, ...)
+    if
+        msg
+        and (
+            msg:match("position_encoding param is required")
+            or msg:match("Defaulting to position encoding of the first client")
+            or msg:match("multiple different client offset_encodings")
+        )
+    then
+        return
+    end
+    return notify_original(msg, ...)
+end
