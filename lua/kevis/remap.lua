@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 vim.opt.timeout = false
 vim.opt.ttimeoutlen = -1
 
+vim.keymap.set("n", "<leader><leader>", "<cmd>:w<cr>")
 vim.keymap.set("n", "<leader>ww", "<cmd>:w<cr>")
 vim.keymap.set("n", "<leader>wq", "<cmd>:q<cr>")
 
