@@ -1,11 +1,11 @@
 return {
 	"github/copilot.vim",
-	build = ":Copilot setup",
-	cmd = { "Copilot" },
-	init = function()
-		vim.g.copilot_tab_fallback = ""
-		vim.keymap.set("i", "<tab>", function()
-			return vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)) or ""
-		end, { expr = true, buffer = true })
+	event = "InsertEnter",
+	config = function()
+		vim.g.copilot_no_tab_map = true
+		vim.keymap.set("i", "<Tab>", 'copilot#Accept("\\<Tab>")', {
+			expr = true,
+			replace_keycodes = false,
+		})
 	end,
 }
