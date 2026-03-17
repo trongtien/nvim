@@ -2,51 +2,17 @@ return {
     "tpope/vim-fugitive",
     config = function()
 
-        -- Floating notification top-right corner
-        local function git_notify(msg, hl_group, timeout)
-            local text = "  " .. msg .. "  "
-            local width = #text
-            local col = vim.o.columns - width - 2
-
-            local buf = vim.api.nvim_create_buf(false, true)
-            vim.api.nvim_buf_set_lines(buf, 0, -1, false, { text })
-
-            local win = vim.api.nvim_open_win(buf, false, {
-                relative = "editor",
-                row = 1,
-                col = col,
-                width = width,
-                height = 1,
-                style = "minimal",
-                border = "rounded",
-                focusable = false,
-                zindex = 200,
-            })
-            vim.wo[win].winhl = "Normal:" .. hl_group .. ",FloatBorder:" .. hl_group
-
-            if timeout then
-                vim.defer_fn(function()
-                    pcall(vim.api.nvim_win_close, win, true)
-                    pcall(vim.api.nvim_buf_delete, buf, { force = true })
-                end, timeout)
-            end
-
-            return win, buf
-        end
-
         -- Run git command async with loading → done/failed notification
         local function git_run(args, label)
-            local win, buf = git_notify("⟳  " .. label .. "...", "DiagnosticInfo")
+            vim.notify("⟳  " .. label .. "...", vim.log.levels.INFO)
 
             vim.fn.jobstart(vim.list_extend({ "git" }, args), {
                 on_exit = function(_, code)
                     vim.schedule(function()
-                        pcall(vim.api.nvim_win_close, win, true)
-                        pcall(vim.api.nvim_buf_delete, buf, { force = true })
                         if code == 0 then
-                            git_notify("✓  " .. label .. " done", "DiagnosticOk", 3000)
+                            vim.notify("✓  " .. label .. " done", vim.log.levels.INFO)
                         else
-                            git_notify("✗  " .. label .. " failed", "DiagnosticError", 5000)
+                            vim.notify("✗  " .. label .. " failed", vim.log.levels.ERROR)
                         end
                     end)
                 end,
@@ -91,7 +57,7 @@ return {
             group = ThePrimeagen_Fugitive,
             pattern = "COMMIT_EDITMSG",
             callback = function()
-                git_notify("✓  Committed", "DiagnosticOk", 3000)
+                vim.notify("✓  Committed", vim.log.levels.INFO)
             end,
         })
 
