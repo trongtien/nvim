@@ -13,7 +13,16 @@ return {
                     enable = false,
                 },
             },
-            renderer = {
+            actions = {
+            remove_file = {
+                close_window = true,
+            },
+        },
+        trash = {
+            cmd = "trash",
+            require_confirm = true,
+        },
+        renderer = {
                 icons = {
                     show = {
                         file = false,
