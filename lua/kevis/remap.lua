@@ -54,6 +54,10 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<M-h>", "<cmd>silent !tmux-sessionizer -s 0 --vsplit<CR>")
@@ -66,4 +70,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+<<<<<<< HEAD
+=======
 vim.keymap.set("n", "<leader>re", vim.diagnostic.open_float, { desc = "Show diagnostics error" })
+>>>>>>> master
