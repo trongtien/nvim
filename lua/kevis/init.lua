@@ -63,20 +63,28 @@ autocmd('BufEnter', {
 autocmd('LspAttach', {
     group = KevisGroup,
     callback = function(e)
-        local opts = { buffer = e.buf }
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set("n", "gf", function() vim.lsp.buf.format() end, opts)
-        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, opts)
-        vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
-        vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
-        vim.keymap.set("n", "<leader>vda", function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, opts)
-        vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set("n", "<leader>ne", function() vim.diagnostic.goto_next() end, opts)
-        vim.keymap.set("n", "<leader>pe", function() vim.diagnostic.goto_prev() end, opts)
+        -- list all methods in a file
+        -- working with go confirmed, don't know about other, keep changing as necessary
+        vim.keymap.set("n", "<leader>fm", function()
+            local filetype = vim.bo.filetype
+            local symbols_map = {
+                python = "function",
+                javascript = "function",
+                typescript = "function",
+                lua = "function",
+                go = { "method", "struct", "interface" },
+            }
+            local symbols = symbols_map[filetype] or "function"
+            require("fzf-lua").lsp_document_symbols({ symbols = symbols })
+        end, {})
     end
 })
 
@@ -97,4 +105,7 @@ autocmd('VimLeavePre', {
         end
     end,
 })
+<<<<<<< HEAD
 
+=======
+>>>>>>> master

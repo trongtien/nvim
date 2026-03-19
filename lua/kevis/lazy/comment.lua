@@ -7,7 +7,6 @@ return {
     { import = "kevis.lazy.fugitive" },
     { import = "kevis.lazy.gitsigns" },
     { import = "kevis.lazy.golf" },
-    { import = "kevis.lazy.harpoon" },
     { import = "kevis.lazy.jai" },
     { import = "kevis.lazy.lsp" },
     { import = "kevis.lazy.neotest" },
@@ -17,7 +16,5 @@ return {
     { import = "kevis.lazy.fzf" },
     { import = "kevis.lazy.tj" },
     { import = "kevis.lazy.treesitter" },
-    { import = "kevis.lazy.undotree" },
-    { import = "kevis.lazy.unused_copilot" },
-    { import = "kevis.lazy.mason" }
+    { import = "kevis.lazy.unused_copilot" }
 }
