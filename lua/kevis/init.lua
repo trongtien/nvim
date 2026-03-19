@@ -105,7 +105,3 @@ autocmd('VimLeavePre', {
         end
     end,
 })
-<<<<<<< HEAD
-
-=======
->>>>>>> master
