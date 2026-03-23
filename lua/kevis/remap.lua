@@ -7,8 +7,8 @@ vim.keymap.set("n", "<leader><leader>", "<cmd>:w<cr>")
 vim.keymap.set("n", "<leader>ww", "<cmd>:w<cr>")
 vim.keymap.set("n", "<leader>wq", "<cmd>:q<cr>")
 
-vim.keymap.set("n", "<leader>vv", "<cmd>Oil<cr>")
-vim.keymap.set("n", "<leader>vf", function() require("oil").open_float() end)
+vim.keymap.set("n", "<leader>-", "<cmd>Oil<cr>")
+vim.keymap.set("n", "<leader>-f", function() require("oil").open_float() end)
 
 vim.keymap.set("n", "sv", ":vsplit<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "sh", ":split<CR>", { desc = "Split window horizontally" })
@@ -66,4 +66,4 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-vim.keymap.set("n", "<leader>re", vim.diagnostic.open_float, { desc = "Show diagnostics error" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostics error" })

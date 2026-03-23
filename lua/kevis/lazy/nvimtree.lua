@@ -14,15 +14,15 @@ return {
                 },
             },
             actions = {
-            remove_file = {
-                close_window = true,
+                remove_file = {
+                    close_window = true,
+                },
             },
-        },
-        trash = {
-            cmd = "trash",
-            require_confirm = true,
-        },
-        renderer = {
+            trash = {
+                cmd = "trash",
+                require_confirm = true,
+            },
+            renderer = {
                 icons = {
                     show = {
                         file = false,
@@ -42,8 +42,7 @@ return {
             },
         })
 
-        vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle nvim-tree" })
-        vim.keymap.set("n", "<leader>fe", function()
+        vim.keymap.set("n", "<C-b>", function()
             local api = require("nvim-tree.api")
             local bufname = vim.fn.bufname()
             if bufname == "" or vim.fn.isdirectory(bufname) ~= 0 then
