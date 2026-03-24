@@ -1,7 +1,6 @@
 return {
     "tpope/vim-fugitive",
     config = function()
-
         -- Run git command async with loading → done/failed notification
         local function git_run(args, label)
             vim.notify("⟳  " .. label .. "...", vim.log.levels.INFO)

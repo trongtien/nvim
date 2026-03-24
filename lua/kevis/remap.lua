@@ -4,11 +4,10 @@ vim.opt.timeout = false
 vim.opt.ttimeoutlen = -1
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>:w<cr>")
-vim.keymap.set("n", "<leader>ww", "<cmd>:w<cr>")
-vim.keymap.set("n", "<leader>wq", "<cmd>:q<cr>")
+vim.keymap.set("n", "<leader>q", "<cmd>:q<cr>")
 
-vim.keymap.set("n", "<leader>-", "<cmd>Oil<cr>")
-vim.keymap.set("n", "<leader>-f", function() require("oil").open_float() end)
+vim.keymap.set("n", "-", "<cmd>Oil<cr>")
+vim.keymap.set("n", "-f", function() require("oil").open_float() end)
 
 vim.keymap.set("n", "sv", ":vsplit<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "sh", ":split<CR>", { desc = "Split window horizontally" })
@@ -18,10 +17,10 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
-vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
-vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
+vim.keymap.set("n", "<C-K>", ":resize +4<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-J>", ":resize -4<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-L>", ":vertical resize -4<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-H>", ":vertical resize +4<CR>", { desc = "Increase window width" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

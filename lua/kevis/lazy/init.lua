@@ -1,6 +1,8 @@
 return {
     "eandrju/cellular-automaton.nvim",
     { import = "kevis.lazy.cloak" },
+    { import = "kevis.lazy.scroll" },
+    { import = "kevis.lazy.auto-tag" },
     { import = "kevis.lazy.colors" },
     { import = "kevis.lazy.conform" },
     { import = "kevis.lazy.dap" },
