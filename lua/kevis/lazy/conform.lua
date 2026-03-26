@@ -21,11 +21,13 @@ return {
                 lua = { "stylua" },
                 go = { "gofmt" },
                 javascript = { "prettier" },
+                json = { "prettier" },
+                html = { "prettier" },
                 typescript = { "prettier" },
                 javascriptreact = { "prettier" },
                 typescriptreact = { "prettier" },
                 css = { "prettier" },
-                elixir = { "mix" },
+                yaml = { "prettier" },
             },
             formatters = {
                 ["clang-format"] = {

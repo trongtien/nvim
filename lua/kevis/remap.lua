@@ -2,12 +2,14 @@ vim.g.mapleader = " "
 
 vim.opt.timeout = false
 vim.opt.ttimeoutlen = -1
+vim.opt.guicursor = "n-v-c:block-blinkon1-CursorInsert,i:block-CursorInsert"
+
+vim.diagnostic.config({
+    virtual_text = true,
+})
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>:w<cr>")
 vim.keymap.set("n", "<leader>q", "<cmd>:q<cr>")
-
-vim.keymap.set("n", "-", "<cmd>Oil<cr>")
-vim.keymap.set("n", "-f", function() require("oil").open_float() end)
 
 vim.keymap.set("n", "sv", ":vsplit<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "sh", ":split<CR>", { desc = "Split window horizontally" })
@@ -17,10 +19,10 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
-vim.keymap.set("n", "<C-K>", ":resize +4<CR>", { desc = "Increase window height" })
-vim.keymap.set("n", "<C-J>", ":resize -4<CR>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<C-L>", ":vertical resize -4<CR>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-H>", ":vertical resize +4<CR>", { desc = "Increase window width" })
+vim.keymap.set("n", "<C-K>", ":resize +6<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-J>", ":resize -6<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-L>", ":vertical resize -6<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-H>", ":vertical resize +6<CR>", { desc = "Increase window width" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -53,16 +55,9 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
 
-vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<M-h>", "<cmd>silent !tmux-sessionizer -s 0 --vsplit<CR>")
-vim.keymap.set("n", "<M-H>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
-
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostics error" })
+vim.keymap.set("n", "<leader>re", vim.diagnostic.open_float, { desc = "Show diagnostics error" })
+
+vim.keymap.set("n", "<leader>pv", function() vim.cmd("Explore") end)

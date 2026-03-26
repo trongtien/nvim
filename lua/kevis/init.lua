@@ -51,11 +51,7 @@ autocmd({ "BufWritePre" }, {
 autocmd('BufEnter', {
     group = KevisGroup,
     callback = function()
-        if vim.bo.filetype == "zig" then
-            pcall(vim.cmd.colorscheme, "tokyonight-night")
-        else
-            pcall(vim.cmd.colorscheme, "rose-pine-moon")
-        end
+        pcall(vim.cmd.colorscheme, "rose-pine-moon")
     end
 })
 
@@ -63,13 +59,14 @@ autocmd('BufEnter', {
 autocmd('LspAttach', {
     group = KevisGroup,
     callback = function(e)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
-        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+        local builtin = require "telescope.builtin"
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = 0 })
+        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
 
         -- list all methods in a file
         -- working with go confirmed, don't know about other, keep changing as necessary
@@ -85,6 +82,11 @@ autocmd('LspAttach', {
             local symbols = symbols_map[filetype] or "function"
             require("fzf-lua").lsp_document_symbols({ symbols = symbols })
         end, {})
+
+        vim.keymap.set("n", "<leader>wd", builtin.lsp_document_symbols, { buffer = 0 })
+        vim.keymap.set("n", "<leader>ww", function()
+            builtin.diagnostics { root_dir = true }
+        end, { buffer = 0 })
     end
 })
 

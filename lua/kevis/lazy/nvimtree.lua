@@ -1,64 +1,39 @@
 return {
     "nvim-tree/nvim-tree.lua",
     config = function()
-        require("nvim-tree").setup({
-            filters = {
-                dotfiles = false,
-                git_ignored = false,
-                custom = {},
-                exclude = {},
-            },
-            view = {
-                float = {
-                    enable = false,
-                },
-            },
-            actions = {
-                remove_file = {
-                    close_window = true,
-                },
-            },
-            trash = {
-                cmd = "trash",
-                require_confirm = true,
-            },
+        local nvimtree_setup, nvimtree = pcall(require, "nvim-tree")
+        if not nvimtree_setup then
+            return
+        end
+        -- change color of arrows in tree
+        vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
+
+        nvimtree.setup({
             renderer = {
                 icons = {
-                    show = {
-                        file = false,
-                        folder = true,
-                        folder_arrow = false,
-                        git = false,
-                    },
                     glyphs = {
                         folder = {
-                            arrow_closed = "",
-                            arrow_open = "",
-                            default = ">",
-                            open = "v",
+                            arrow_closed = ">>", -- closed folder icon
+                            arrow_open = ">>",   -- open folder icon
                         },
                     },
                 },
             },
+            actions = {
+                open_file = {
+                    window_picker = {
+                        enable = false,
+                    },
+                },
+            },
+            filters = {
+                dotfiles = false,
+            },
+            git = {
+                ignore = false, -- show .gitignored files.
+            },
         })
 
-        vim.keymap.set("n", "<C-b>", function()
-            local api = require("nvim-tree.api")
-            local bufname = vim.fn.bufname()
-            if bufname == "" or vim.fn.isdirectory(bufname) ~= 0 then
-                if not api.tree.is_visible() then
-                    api.tree.open()
-                else
-                    api.tree.focus()
-                end
-                return
-            end
-            if not api.tree.is_visible() then
-                api.tree.open()
-            else
-                api.tree.focus()
-            end
-            api.tree.find_file(vim.fn.fnamemodify(bufname, ":."))
-        end, { desc = "Focus nvim-tree on current file" })
+        vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
     end,
 }

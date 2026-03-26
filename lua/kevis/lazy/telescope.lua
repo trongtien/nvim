@@ -4,7 +4,7 @@ return {
     tag = "0.1.5",
 
     dependencies = {
-        { "nvim-lua/plenary.nvim", rocks = { enabled = false } },
+        { "nvim-lua/plenary.nvim",                    rocks = { enabled = false } },
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
 
@@ -63,14 +63,13 @@ return {
                 },
             },
         })
-
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>ff', function()
             telescope.load_extension('fzf')
             builtin.find_files({ no_ignore = true, hidden = true })
         end, { desc = "Find all files (including hidden/ignored)" })
 
-        vim.keymap.set('n', '<C-p>', function()
+        vim.keymap.set('n', '<leader>fg', function()
             telescope.load_extension('fzf')
             builtin.git_files()
         end, { desc = "Git files" })
@@ -87,11 +86,10 @@ return {
             builtin.grep_string({ search = word })
         end)
 
-        vim.keymap.set('n', '<leader>fg', function()
+        vim.keymap.set('n', '<C-f>', function()
             telescope.load_extension('fzf')
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
     end
 }
-
